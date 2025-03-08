@@ -1,4 +1,4 @@
-const router = require("./routes/movies.js")
+const router = require("./routes/movies.route.js")
 const express = require("express");
 const app = express();
 const port = 7125;
