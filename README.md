@@ -11,7 +11,7 @@ A repository to learn and practice Express.js, covering fundamental concepts, mi
 3. `npm install nodemon`
 
 ## app.js
-
+```sh
     const express = require('express')
     const app = express()
     const port = 3000
@@ -23,6 +23,7 @@ A repository to learn and practice Express.js, covering fundamental concepts, mi
     app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
     })
+```
 
 ### **Importing Expresss**
 

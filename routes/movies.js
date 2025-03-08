@@ -7,12 +7,12 @@ const router = express.Router();
 // C - Create
 router.get("/", (req, res) => {
 //   res.status(200).json({message: "Movie creaed"})
-    res.send("movie Viewed")
+    res.send("Movie Viewed")
 });
 
 // R - Read
 router.post("/", (req, res) => {
-  res.send("Movie Listed");
+  res.send("Movie Created");
 });
 
 // U - Update
