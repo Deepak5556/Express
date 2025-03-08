@@ -1,9 +1,6 @@
 const express = require('express');
 const app = express();
-
 const port = 7125;
-
-
 app.get('/',(req,res) => {
  res.json({message: 'Hello World!'});
 });
