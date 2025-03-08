@@ -12,7 +12,7 @@ A repository to learn and practice Express.js, covering fundamental concepts, mi
 
 ## app.js
 
-```sh
+```javascript
     const express = require('express')
     const app = express()
     const port = 3000
@@ -30,13 +30,13 @@ A repository to learn and practice Express.js, covering fundamental concepts, mi
 
 There are two ways to import **express**
 
-1.             ```
-         import express from "express";
-         ```
+1.  ```javascript
+    import express from "express";
+    ```
 
     and also add **package.json** and `   "type":"module";`
 
-2.  ```
+2.  ```javascript
     const express = require("express");
     ```
 
@@ -100,7 +100,7 @@ In an Express.js application, controllers are responsible for handling business 
 # **Installation**
 
 1. 
-    ```
+    ```sh
     npm install mongoose
     ```
 
@@ -112,7 +112,7 @@ Create ```Lib``` directory and create ```Db.js``` file add bellow connection cod
 
 # **Connection Code**
 
-```sh
+```javascript
     const { mongoose } = require("mongoose");
     const URL = //Replace Your URL Here
     exports.connectDB = async () =>
@@ -128,4 +128,21 @@ Create ```Lib``` directory and create ```Db.js``` file add bellow connection cod
             process.exit(1);
         }
     };
+```
+
+
+
+# Configaration of .env
+
+To Hide Sensitive Files We Are Using .env
+
+### Install 
+```sh
+npm install dotenv
+```
+
+Import in Db.js File
+
+```javascript
+const dotenv = require("dotenv");
 ```
