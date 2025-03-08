@@ -1,22 +1,26 @@
-const router = require("./routes/movies.route.js")
-const express = require("express");
-const app = express();
-const port = 7125;
+  const {  connectDB } = require("./lib/db.js");
+  const router = require("./routes/movies.route.js");
+  const express = require("express");
+  const app = express();
+  const port = 7125;
 
-//Assign
+  //Connect DB
+  connectDB();
 
-// app.get("/", (req, res) => {
-//   res.json({ message: "Hello World!" });
-// });
+  //Assign
 
-app.use("/movie", router);
+  // app.get("/", (req, res) => {
+  //   res.json({ message: "Hello World!" });
+  // });
 
-//Listen
+  app.use("/movie", router);
 
-// app.listen(port,()=>{
-//     console.log("port",port);
-// })
-//or
-app.listen(port, () => {
-  console.log(`port:${port}`);
-});
+  //Listen
+
+  // app.listen(port,()=>{
+  //     console.log("port",port);
+  // })
+  //or
+  app.listen(port, () => {
+    console.log(`port:${port}`);
+  });

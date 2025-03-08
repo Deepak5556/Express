@@ -1,5 +1,5 @@
 const express = require("express");
-const { movieIndex, movieCreate, movieUpdate, movieDelete } = require("../controller/movies.controller");
+const { movieIndex, movieCreate, movieUpdate, movieDelete } = require("../controller/movies.controller.js");
 
 const router = express.Router();
 

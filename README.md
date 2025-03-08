@@ -11,6 +11,7 @@ A repository to learn and practice Express.js, covering fundamental concepts, mi
 3. `npm install nodemon`
 
 ## app.js
+
 ```sh
     const express = require('express')
     const app = express()
@@ -29,7 +30,7 @@ A repository to learn and practice Express.js, covering fundamental concepts, mi
 
 There are two ways to import **express**
 
-1.       ```
+1.             ```
          import express from "express";
          ```
 
@@ -88,4 +89,43 @@ There are two ways to import **express**
     router.delete("/", (req, res) => {
         res.send("Movie Delete")
     });
+```
+
+# Controller
+
+In an Express.js application, controllers are responsible for handling business logic and separating route definitions from request processing. They help keep your code clean, modular, and reusable.
+
+# **Connecting to Database** - MangoDB Atlas
+
+# **Installation**
+
+1. 
+    ```
+    npm install mongoose
+    ```
+
+Create DataBase in MongoDB Atlas And Connect The DB with UR
+
+Create ```Lib``` directory and create ```Db.js``` file add bellow connection code in the created js file
+
+
+
+# **Connection Code**
+
+```sh
+    const { mongoose } = require("mongoose");
+    const URL = //Replace Your URL Here
+    exports.connectDB = async () =>
+    {
+        try
+        {
+            await mongoose.connect(URL);
+            console.log("MongoDB is Running Successfully");
+        } 
+        catch (error)
+        {
+            console.error(error.message);
+            process.exit(1);
+        }
+    };
 ```
