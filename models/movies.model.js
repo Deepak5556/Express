@@ -1,7 +1,11 @@
 const { Schema, model } = require("mongoose");
 //Write the Schema
 const schema = new Schema({
-  title: String,
+  title: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   desc: String,
 });
 

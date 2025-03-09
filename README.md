@@ -13,17 +13,17 @@ A repository to learn and practice Express.js, covering fundamental concepts, mi
 ## app.js
 
 ```javascript
-    const express = require('express')
-    const app = express()
-    const port = 3000
+const express = require("express");
+const app = express();
+const port = 3000;
 
-    app.get('/', (req, res) => {
-    res.send('Hello World!')
-    })
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 
-    app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-    })
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
 ```
 
 ### **Importing Expresss**
@@ -97,46 +97,40 @@ In an Express.js application, controllers are responsible for handling business 
 
 # **Connecting to Database** - MangoDB Atlas
 
+### **Create Cluster in MongoDB**
+
 # **Installation**
 
-1. 
-    ```sh
+1.  ```sh
     npm install mongoose
     ```
 
 Create DataBase in MongoDB Atlas And Connect The DB with UR
 
-Create ```Lib``` directory and create ```Db.js``` file add bellow connection code in the created js file
-
-
+Create `Lib` directory and create `Db.js` file add bellow connection code in the created js file
 
 # **Connection Code**
 
 ```javascript
-    const { mongoose } = require("mongoose");
-    const URL = //Replace Your URL Here
-    exports.connectDB = async () =>
-    {
-        try
-        {
-            await mongoose.connect(URL);
-            console.log("MongoDB is Running Successfully");
-        } 
-        catch (error)
-        {
-            console.error(error.message);
-            process.exit(1);
-        }
-    };
+const { mongoose } = require("mongoose");
+const URL = //Replace Your URL Here
+  (exports.connectDB = async () => {
+    try {
+      await mongoose.connect(URL);
+      console.log("MongoDB is Running Successfully");
+    } catch (error) {
+      console.error(error.message);
+      process.exit(1);
+    }
+  });
 ```
 
-
-
-# Configaration of .env
+## Configaration of .env
 
 To Hide Sensitive Files We Are Using .env
 
-### Install 
+### Install
+
 ```sh
 npm install dotenv
 ```
@@ -145,4 +139,114 @@ Import in Db.js File
 
 ```javascript
 const dotenv = require("dotenv");
+```
+
+Add `.env` file and add Your MongoDB URL
+
+```Javascript
+MONGODB_URI = "YOUR URL HERE"
+```
+
+After Creating env File Add `.env` in `.gitignore` file to keep your MongoDB URL Private.
+
+Declare :
+
+```javascript
+dotenv.config();
+const URL = process.env.MONGODB_URI;
+```
+
+### Full Code Of Db.js
+
+```javascript
+const { mongoose } = require("mongoose");
+const dotenv = require("dotenv");
+dotenv.config();
+const URL = process.env.MONGODB_URI;
+exports.connectDB = async () => {
+  try {
+    await mongoose.connect(URL);
+    console.log("MongoDB is Running Successfully");
+  } catch (error) {
+    console.error(error.message);
+    process.exit(1);
+  }
+};
+```
+
+## Add this in app.js for getting the json by URL Encoder
+
+```js
+app.use(express.urlencoded({ extended: true }));
+```
+
+## For Validation
+
+Creating Model Folder and `movie.model.js` File For Creatin Schema
+
+Import Schema in `movies.model.js`
+
+```js
+import { Schema } from "mongoose";
+```
+
+## OR
+
+```js
+const { Schema } = require("mongoose");
+```
+
+## Adding Schema
+
+```js
+const schema = new Schema({
+  title: String,
+  desc: String,
+});
+```
+
+## Creating Your Model
+
+```js
+const Movies = model("Movie", schema);
+```
+
+## Importing Model
+
+```js
+const { Schema } = require("mongoose");
+```
+
+## Export Model
+
+```js
+module.exports = Movies;
+```
+
+## Or
+
+```js
+module.exports = Movies;
+```
+
+# Schema
+
+```js
+const schema = new Schema({
+  title: String,
+  desc: String,
+});
+```
+
+# Mongoose Validation
+
+```js
+const schema = new Schema({
+  title: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  desc: String,
+});
 ```
