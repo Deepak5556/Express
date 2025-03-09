@@ -1,18 +1,36 @@
-exports.movieIndex = (req, res) => {
+const Movies  = require("../models/movies.model");
+
+const movieIndex = (req, res) => {
   res.send("Movie Viewed");
 };
 
-exports.movieCreate = (req, res) => {
+const movieCreate = async (req, res) => {
   //id,title,des
-  //Creating Movie info
+
+  //Validate Your Data
+  const newMovies = new Movies({
+    title: req.body.title,
+    desc: req.body.desc,
+  });
+
+  try {
+    //Successfull
+    const movie = await newMovies.save();
+    return res.status(201).json(movie);
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
+
   // res.send("Movie Created");
-  return res.json(req.body);
+  // return res.json(req.body);
 };
 
-exports.movieUpdate = (req, res) => {
+const movieUpdate = (req, res) => {
   res.send("Movie Updated");
 };
 
-exports.movieDelete = (req, res) => {
+const movieDelete = (req, res) => {
   res.send("Movie Deleted");
 };
+
+module.exports = { movieIndex, movieCreate, movieUpdate, movieDelete };
