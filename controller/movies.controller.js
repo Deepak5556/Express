@@ -1,7 +1,12 @@
-const Movies  = require("../models/movies.model");
+const Movies = require("../models/movies.model");
 
-const movieIndex = (req, res) => {
-  res.send("Movie Viewed");
+const movieIndex = async (req, res) => {
+  try {
+    const moviesList = await Movies.find();
+    res.json(moviesList);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
 
 const movieCreate = async (req, res) => {
