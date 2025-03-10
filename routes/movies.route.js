@@ -1,19 +1,24 @@
 const express = require("express");
-const { movieIndex, movieCreate, movieUpdate, movieDelete } = require("../controller/movies.controller.js");
+const { movieIndex, movieCreate, movieUpdate, movieDelete,movieShow } = require("../controller/movies.controller.js");
 
 const router = express.Router();
 
 // CRUD Operation
 
 // C - Create
-router.get("/",movieIndex );
+router.post("/", movieCreate);
 
 // R - Read
-router.post("/", movieCreate);
+router.get("/",movieIndex );
+
+//Particular id
+router.get("/:id", movieShow)
 
 // U - Update
 router.put("/", movieUpdate);
+
 // D - Delete
 router.delete("/", movieDelete);
+
 
 module.exports = router;
