@@ -13,9 +13,9 @@ connectDB();
 
 //Assign
 
-// app.get("/", (req, res) => {
-//   res.json({ message: "Hello World!" });
-// });
+app.get("/", (req, res) => {
+  res.json({ message: "Hello World!" });
+});
 
 app.use("/movie", router);
 
